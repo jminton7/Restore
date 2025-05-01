@@ -34,7 +34,7 @@ export default function ProductCard({ product }: Props) {
           variant="subtitle2"
           sx={{ textTransform: "uppercase" }}
         >
-          <Typography variant="h6" sx={{ color: "secondary.main" }}>
+          <Typography variant="caption" sx={{ color: "secondary.main" }}>
             ${(product.price / 100).toFixed(2)}
           </Typography>
         </Typography>
