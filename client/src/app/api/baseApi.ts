@@ -3,6 +3,7 @@ import {
   FetchArgs,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query";
+import { startLoading, stopLoading } from "../layout/uiSlice";
 
 const customBaseQuery = fetchBaseQuery({
   baseUrl: "https://localhost:5001/api/",
@@ -15,7 +16,9 @@ export const baseQueryWithErrorHandling = async (
   api: BaseQueryApi,
   extraOptions: object
 ) => {
+  api.dispatch(startLoading());
   await sleep(); // Simulate a delay
+  api.dispatch(stopLoading());
   const result = await customBaseQuery(args, api, extraOptions);
   if (result.error) {
     console.error("Error occurred:", result.error);
